@@ -1,3 +1,7 @@
+
+  
+ 
+
 const bar = document.getElementById('bar');
 const nav = document.getElementById('navbar');
 
@@ -43,7 +47,6 @@ var shoppingCart = (function() {
   
   // Add to cart
   obj.addItemToCart = function(name, price, count, image,describe) {
-    debugger
     for(var item in cart) {
       if(cart[item].name === name) {
         cart[item].count ++;
@@ -143,23 +146,6 @@ var shoppingCart = (function() {
 })();
 
 
-// Add item
-$('.add-to-cart').click(function(event) {
-  event.preventDefault();
-  var name = $(this).data('name');
-  var price = Number($(this).data('price'));
-  var image = $(this).data('image');
-  var describe =  $(this).data('describe');
-  shoppingCart.addItemToCart(name, price,1,image,describe);
-  console.log(name)
-  displayCart();
-});
-
-// Clear items
-$('.clear-cart').click(function() {
-  shoppingCart.clearCart();
-  displayCart();
-});
 
 
 function displayCart() {
@@ -183,15 +169,14 @@ $('.show-cart').on("click", ".delete-item", function(event) {
 
 displayCart();
 
-$('.add-to-cart').on('click', function(){
-  $('#mainCartIcon').text(shoppingCart.totalCount());
-})
+
 
 $('.clear-cart').on('click', function(){
   $('#mainCartIcon').text(0);
 })
 
 $('#mainCart').on('click', function(){
+  // remove older modal items
   $("#cartItem").nextAll().remove();
     //  cardlist = $("#cartList")
   shoppingCart.listCart().forEach(function(item){
@@ -248,7 +233,6 @@ $(document).ready(function() { $('#mainCartIcon').text(shoppingCart.totalCount()
   smallimg[3].onclick = function(){
   MainImg.src = smallimg[3].src
   }
-  
   var arr = [
     {
       id: "1",
@@ -308,80 +292,105 @@ $(document).ready(function() { $('#mainCartIcon').text(shoppingCart.totalCount()
     },
 
   ]
-  {
-    {
-      arr.forEach(function(value){
-        console.log("value", value)
-        $("#featureProduct").append("<div class='pro'><img src="+ value.image +"><div class='des'><span>"+ value.name +"</span><h5> "+ value.branch +"  </h5><div class='star'><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i></div><h4>"+ value.price +"</h4></div><a href='#'data-name='adidas' data-describe='Cartoon Astronaut T-Shirts'data-price='78'data-image='img/products/f1.jpg'class='add-to-cart btn btn-primary'><i class='fa fa-shopping-bag'style='font-size:36px'></i></a></div>");
-      })
-    }
-  }
 
-   
-  var arr = [
-    {
-      id: "9",
-      image: "img/products/n1.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$78"
-    },
-    {
-      id: "10",
-      image: "img/products/n2.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$88"
-    },
-    {
-      id: "11",
-      image: "img/products/n3.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$54"
-    },
-    {
-      id: "12",
-      image: "img/products/n4.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$120"
-    },
-    {
-      id: "13",
-      image: "img/products/n5.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$103"
-    },
-    {
-      id: "14",
-      image: "img/products/n6.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$203"
-    },
-    {
-      id: "15",
-      image: "img/products/n7.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$77"
-    },
-    {
-      id: "16",
-      image: "img/products/n8.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$99"
-    },
-
-  ]
+function loadData2(){
   {
-    {
-      arr.forEach(function(obj){
-        console.log("obj", obj)
-        $("#newarrival").append("<div class='pro'><img src="+ obj.image +"><div class='des'><span>"+ obj.name +"</span><h5> "+ obj.branch +"  </h5><div class='star'><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i></div><h4>"+ obj.price +"</h4></div><a href='#'data-name='adidas' data-describe='Cartoon Astronaut T-Shirts'data-price='78'data-image='img/products/n1.jpg'class='add-to-cart btn btn-primary'><i class='fa fa-shopping-bag'style='font-size:36px'></i></a></div>");
-      })
-    }
+    arr.forEach(function(value){
+      $("#featureProduct").append("<div class='pro'><img src="+ value.image +" ><div class='des'><span>"+ value.name +" </span><h5> "+ value.branch +"  </h5><div class='star'><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i></div><h4>"+ value.price +"</h4></div><a href='#' data-name="+ value.name +" data-describe='"+ value.branch +"' data-price="+ value.price +" data-image="+ value.image +" class='add-to-cart btn btn-primary'><i class='fa fa-shopping-bag'style='font-size:36px'></i></a></div>");
+    })
   }
+}
+loadData2()
+// var arr = [
+//   {
+//     id: "9",
+//     image: "img/products/n1.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$78",
+//     number:"22"
+//   },
+//   {
+//     id: "10",
+//     image: "img/products/n2.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$88",
+//     number:"33"
+//   },
+//   {
+//     id: "11",
+//     image: "img/products/n3.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$54",
+//     number:"99"
+//   },
+//   {
+//     id: "12",
+//     image: "img/products/n4.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$120",
+//     number:"88"
+//   },
+//   {
+//     id: "13",
+//     image: "img/products/n5.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$103",
+//     number:"77"
+//   },
+//   {
+//     id: "14",
+//     image: "img/products/n6.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$203",
+//     number:"66"
+//   },
+//   {
+//     id: "15",
+//     image: "img/products/n7.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$77",
+//     number:"55"
+//   },
+//   {
+//     id: "16",
+//     image: "img/products/n8.jpg",
+//     name: "adidas",
+//     branch: "Cartoon Astronaut T-Shirts",
+//     price: "$99",
+//     number:"44"
+//   },
+
+// ]
+
+// function loadData(){
+//   arr.forEach(function(obj){
+//     $("#newarrival").append("<div class='pro'><img src="+ obj.image +"><div class='des'><span>"+ obj.name +" </span><h5> "+ obj.branch +"  </h5><div class='star'><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i></div><h4>"+ obj.price +" </h4></div><a href='#'data-name="+ obj.name +" data-describe="+ obj.branch +" data-price="+obj.price+" data-image="+obj.image+" class='add-to-cart btn btn-primary'><i class='fa fa-shopping-bag'style='font-size:36px'></i></a></div>");
+//   })
+// }
+// loadData()
+
+
+//Add item
+$('.add-to-cart').click(function(event) {
+  event.preventDefault();
+  var name = $(this).data('name');
+  var price = Number($(this).data('price'));
+  var image = $(this).data('image');
+  var describe =  $(this).data('describe');
+  shoppingCart.addItemToCart(name, price,1,image,describe);
+  displayCart();
+  $('#mainCartIcon').text(shoppingCart.totalCount());
+});
+
+// Clear items
+$('.clear-cart').click(function() {
+  shoppingCart.clearCart();
+  displayCart();
+});
