@@ -1,7 +1,3 @@
-
-  
- 
-
 const bar = document.getElementById('bar');
 const nav = document.getElementById('navbar');
 
@@ -235,60 +231,53 @@ $(document).ready(function() { $('#mainCartIcon').text(shoppingCart.totalCount()
   }
   var arr = [
     {
-      id: "1",
-      image: "img/products/f1.jpg",
-      name: "adidas",
-      branch: "Cartoon Astronaut T-Shirts",
-      price: "$78"
-    },
-    {
       id: "2",
       image: "img/products/f2.jpg",
       name: "adidas1",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$88"
+      price: 88
     },
     {
       id: "3",
       image: "img/products/f3.jpg",
       name: "adidas2",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$54"
+      price: 54
     },
     {
       id: "4",
       image: "img/products/f4.jpg",
       name: "adidas3",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$120"
+      price: 120
     },
     {
       id: "5",
       image: "img/products/f5.jpg",
       name: "adidas4",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$103"
+      price: 103
     },
     {
       id: "6",
       image: "img/products/f6.jpg",
       name: "adidas5",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$203"
+      price: 203
     },
     {
       id: "7",
       image: "img/products/f7.jpg",
       name: "adidas6",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$77"
+      price: 77
     },
     {
       id: "8",
       image: "img/products/f8.jpg",
       name: "adidas7",
       branch: "Cartoon Astronaut T-Shirts",
-      price: "$99"
+      price: 99
     },
 
   ]
@@ -296,7 +285,7 @@ $(document).ready(function() { $('#mainCartIcon').text(shoppingCart.totalCount()
 function loadData2(){
   {
     arr.forEach(function(value){
-      $("#featureProduct").append("<div class='pro'><img src="+ value.image +" ><div class='des'><span>"+ value.name +" </span><h5> "+ value.branch +"  </h5><div class='star'><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i></div><h4>"+ value.price +"</h4></div><a href='#' data-name="+ value.name +" data-describe='"+ value.branch +"' data-price="+ value.price +" data-image="+ value.image +" class='add-to-cart btn btn-primary'><i class='fa fa-shopping-bag'style='font-size:36px'></i></a></div>");
+      $("#featureProduct").append("<div class='pro'><img src="+ value.image +" ><div class='des'><span>"+ value.name +" </span><h5> "+ value.branch +"  </h5><div class='star'><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i><i class='fa fa-star checked'></i></div><h4>$"+ value.price +"</h4></div><a href='#' data-name="+ value.name +" data-describe='"+ value.branch +"' data-price="+ value.price +" data-image="+ value.image +" class='add-to-cart btn btn-primary'><i class='fa fa-shopping-bag'style='font-size:36px'></i></a></div>");
     })
   }
 }
